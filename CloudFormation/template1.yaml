@@ -1,0 +1,29 @@
+Description: Practica Automatizar la creacion de un recurso cloud
+Resources:
+  BucketSam:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: bucketsamhoy
+      AccessControl: Private
+      VersioningConfiguration:
+        Status: Enabled
+  Instance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      DisableApiTermination: false
+      ImageId: ami-04a81a99f5ec58529  # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+      InstanceType: t2.micro
+      InstanceInitiatedShutdownBehavior: terminate
+      KeyName: sammycantoral # Aquí debes reemplazar con el nombre exacto de tu llave SSH en AWS
+      Monitoring: false
+  Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      DisableApiTermination: false
+      ImageId: ami-04a81a99f5ec58529  # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+      InstanceType: t2.micro
+      InstanceInitiatedShutdownBehavior: terminate
+      KeyName: sammycantoral # Aquí debes reemplazar con el nombre exacto de tu llave SSH en AWS
+      Monitoring: false

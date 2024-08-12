@@ -1,0 +1,45 @@
+Parameters:
+  Ambiente:
+    Type: String    
+    AllowedValues: [produccion,desarrollo,testing]
+    Description: Tipo de ambiente
+
+Mappings:
+  TipoDeInstancia:
+    produccion:
+      instanceType: t2.micro      
+    desarrollo:
+      instanceType: t2.micro # t1.micro la guia pide pero no es capa gratuita
+    testing:
+      instanceType: t2.micro        
+
+  Imagen:
+    produccion:    
+      imageId: ami-04a81a99f5ec58529  # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+    desarrollo:     
+      imageId: ami-07d9456e59793a7d5 # Microsoft Windows 2022 Datacenter edition (HVM)
+    testing:     
+      imageId: ami-04a81a99f5ec58529  # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
+  
+  Nombre:
+    produccion:
+      Tags: 
+        - Key: Name
+          Value: "Instancia_CloudFormation_produccion"
+    desarrollo:
+      Tags: 
+        - Key: Name
+          Value: "Instancia_CloudFormation_desarrollo"
+    testing:
+      Tags: 
+        - Key: Name
+          Value: "Instancia_CloudFormation_testing"
+
+Resources:
+  InstanciaEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !FindInMap [TipoDeInstancia, !Ref 'Ambiente', instanceType]
+      ImageId: !FindInMap [Imagen, !Ref 'Ambiente', imageId]
+      KeyName: sammycantoral  # Aquí debes reemplazar con el nombre exacto de tu llave SSH en AWS
+      Tags: !FindInMap [Nombre, !Ref 'Ambiente', Tags]
