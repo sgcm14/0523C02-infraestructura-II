@@ -4,11 +4,14 @@ En esta actividad vamos a realizar la modificación de los servidores que creamo
 con nuestra plantilla de CloudFormation. Para esto vamos a necesitar lo siguiente:
 1. Archivo plano (txt) con nuestro inventario de servidores.
 2. Playbook de Ansible.
+
 Tengamos en cuenta las siguientes consideraciones:
-● Tenemos que tener instalado Ansible y sus dependencias.
-● Debemos tener descargado en nuestras PC la KeyPair(.PEM) para poder
+- Tenemos que tener instalado Ansible y sus dependencias.
+- Debemos tener descargado en nuestras PC la KeyPair(.PEM) para poder
 utilizarla luego dentro del inventario.
-—---------------------------------------------------------------------------
+
+---
+
 Ayuda
 Para tu inventario
 La configuración del servidor debe ser similar a la siguiente:
