@@ -5,17 +5,6 @@ resource "aws_instance" "webserver1" {
   key_name = "sammycantoral" # Aquí debes reemplazar con el nombre exacto de tu llave SSH en AWS
   subnet_id = aws_subnet.subnet-public-1.id
   security_groups = [ aws_security_group.webserversg.id ]
-  /*user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get upgrade -y
-              apt-get install apache2 -y
-              apt-get install git -y
-              service apache2 start
-              git clone https://github.com/matiicatrina/template_html.git
-              cp -r template_html/* /var/www/html/
-              service apache2 restart
-              EOF*/
   user_data = <<-EOF
               #!/bin/bash
               apt-get update
@@ -38,17 +27,6 @@ resource "aws_instance" "webserver2" {
   key_name = "sammycantoral" # Aquí debes reemplazar con el nombre exacto de tu llave SSH en AWS
   subnet_id = aws_subnet.subnet-public-2.id
   security_groups = [ aws_security_group.webserversg.id ]
-  /*user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get upgrade -y
-              apt-get install apache2 -y
-              apt-get install git -y
-              service apache2 start
-              git clone https://github.com/matiicatrina/template_html.git
-              cp -r template_html/* /var/www/html/
-              service apache2 restart
-              EOF*/
   user_data = <<-EOF
               #!/bin/bash
               apt-get update

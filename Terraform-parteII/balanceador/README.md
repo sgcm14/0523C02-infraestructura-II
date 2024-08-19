@@ -27,8 +27,19 @@ Tengamos en cuenta las siguientes consideraciones:
 
 
 Arquitectura a codear:
-![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/Ejemplo.PNG)
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/balanceador/Ejemplo.PNG)
 > Pantalla de arquitectura a replicar
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/balanceador/image1.png)
+> Pantalla de balanceador creado y conectado
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/balanceador/image2.png)
+> Pantalla de web server 1 desde balanceador
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/balanceador/image3.png)
+> Pantalla de web server 2 desde balanceador
 
 
 

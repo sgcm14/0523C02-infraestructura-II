@@ -1,9 +1,7 @@
-Creando un entorno de trabajo - P2
+Creando un entorno de trabajo - P1
 =========
 
-En esta actividad vamos a continuar trabajando con la actividad anterior. Pero vamos a balancear nuestro entorno con un ELB. 
-
-Aplicaremos los modulos para los archivos.
+En esta actividad vamos a realizar la creación de un entorno de trabajo con las siguientes características:
 
 1. Una VPC
 
@@ -13,12 +11,9 @@ Aplicaremos los modulos para los archivos.
         ii. Dos subredes Privadas
 2. Dos instancias EC2
 
-    a. Las características tienen que ser similares a las del ejercicio de
-CloudFormation
+    a. Las características tienen que ser similares a las del ejercicio de CloudFormation
 
-3. Balancear las cargas entre los 2 servidores:
-    -  El ELB debe ser de tipo Application load Balancer.
-    - Debe estar dentro de la misma VPC que el resto de los componentes.
+Aplicaremos los modulos para los archivos.
 
 Tengamos en cuenta las siguientes consideraciones:
 - Tenemos que tener instalado AWS CLI
@@ -27,7 +22,7 @@ Tengamos en cuenta las siguientes consideraciones:
 
 
 Arquitectura a codear:
-![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteII/Ejemplo.PNG)
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteI/vpc/Ejemplo.PNG)
 > Pantalla de arquitectura a replicar
 
 
