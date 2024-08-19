@@ -35,6 +35,15 @@ Tengamos en cuenta las siguientes consideraciones:
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/CloudFormation/Captura5.PNG)
 >  Pantalla de crear pila - cloudFormation
 
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/CloudFormation/instancias.PNG)
+>  Pantalla de instancias creadas
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/CloudFormation/bucket.PNG)
+>  Pantalla de bucket creado
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/CloudFormation/pila.PNG)
+>  Pantalla de pila creada
+
 
 **Challenge:**
 -
