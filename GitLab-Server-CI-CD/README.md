@@ -15,7 +15,7 @@ Verificamos que se está ejecutando con el comando:
     docker ps
 
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura1.PNG)
-> Pantalla de terminal server gitlab
+> Pantalla de PC huesped
 
 Una vez en ejecución utilizamos el siguiente comando para poder ingresar al contenedor y realizar algunas verificaciones:
 
@@ -95,83 +95,193 @@ Ya tenemos nuestros  2 contenedores:
 - Contenedor 1: Nuestro servidor propio de GitLab
 - Contenedor 2 : Nuestro servidor Apache
 
-5 - Creamos una nueva red en Docker con el comando
-docker network create <nombre de nuestra red>
+Creamos una nueva red en Docker con el comando
 
-Al tener 2 contenedores y entre ellos se van a comunicar, vamos a realizar la
-conexión a una misma red a través del siguiente comando:
-docker network connect <nombre de red que creamos> <container id>
+    docker network create <nombre de nuestra red>
 
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura10.PNG)
+> Pantalla de PC huesped
+
+Al tener 2 contenedores y entre ellos se van a comunicar, vamos a realizar la conexión a una misma red a través del siguiente comando:
+
+    docker network connect <nombre de red que creamos> <container id>
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura11.PNG)
+> Pantalla de PC huesped
 
 Podemos verificar que nuestro contenedor ya tiene seteado la nueva red usando:
-docker inspect <container id>
 
-6 - Vamos a ingresar a nuestro contenedor de Apache para poder realizar algunas
-modificaciones de la siguiente manera:
-docker exec -it 29e3c0f41102 bash
+    docker inspect <container id> (Aca verificamos que nuestra red está attacheada en nuestro contenedor)
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura12.PNG)
+> Pantalla de PC huesped
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura13.PNG)
+> Pantalla de PC huesped
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura14.PNG)
+> Pantalla de PC huesped
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura15.PNG)
+> Pantalla de PC huesped
+
+Vamos a ingresar a nuestro contenedor de Apache para poder realizar algunas modificaciones de la siguiente manera:
+
+    docker exec -it 29e3c0f41102 bash
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura16.PNG)
+> Pantalla de server apache
+
 Luego instalamos y actualizamos utilizando los siguientes comandos:
-Actualizamos librerías: apt update
-Instalamos wget para después instalar nuestro runner: apt install wget
-Instalamos nuestro servidor web Apache: apt install apache2
-Instalamos git para utilizarlo más adelante: apt install git
-Inicializamos nuestro servidor: service apache2 start
+Actualizamos librerías:
+
+     apt update
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura17.PNG)
+> Pantalla de server apache
+
+Instalamos wget para después instalar nuestro runner: 
+
+    apt install wget
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura18.PNG)
+> Pantalla de server apache
+
+Instalamos nuestro servidor web Apache:
+ 
+    apt install apache2
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura19.PNG)
+> Pantalla de server apache
+    
+Instalamos git para utilizarlo más adelante:
+     
+     apt install git
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura20.PNG)
+> Pantalla de server apache
+
+Inicializamos nuestro servidor: 
+    
+    service apache2 start
+
+Finalmente deberíamos llegar a la siguiente imagen, en donde nos va a devolver la ip de nuestro servidor Apache
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura21.PNG)
+> Pantalla de server apache
+
+Corroboramos que efectivamente nuestro servidor esta ON ingresando al navegador la ip anterior:
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura22.PNG)
+> Pantalla de server apache
+
+Nos tocaría ahora reemplazar dicha web, por nuestro proyecto que tenemos en GitLab. Ejecutamos lo siguiente:
+
+    cd /var/www/html (nos posicionamos dentro del directorio del servidor)
+
+    ls (verificamos nuestro que está nuestro archivo index.html)
+
+    rm * : (borramos todo lo que exista dentro del directorio actual)
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura23.PNG)
+> Pantalla de server apache
 
 
-Finalmente deberíamos llegar a la siguiente imagen, en donde nos va a devolver la ip
-de nuestro servidor Apache
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura24.PNG)
+> Pantalla de server apache
 
-Corroboramos que efectivamente nuestro servidor esta ON ingresando al navegador
-la ip anterior:
+    git clone <el que utilizamos en el paso 3> /var/www/html/ (clonamos nuestro repositorio)
 
-7 - Nos tocaría ahora reemplazar dicha web, por nuestro proyecto que tenemos en
-GitLab. Ejecutamos lo siguiente:
-● cd /var/www/html (nos posicionamos dentro del directorio del servidor)
-● ls (verificamos nuestro que está nuestro archivo index.html)
-● rm * : (borramos todo lo que exista dentro del directorio actual)
-● git clone <el que utilizamos en el paso 3> /var/www/html/ (clonamos nuestro
-repositorio)
 Nos debería quedar algo similar a esto:
 
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura25.PNG)
+> Pantalla de server apache
 
-Y ambos están correctamente conectados a la misma red docker. Procedemos a instalar nuestro runner quien va a ser el responsable de ejecutar nuestro pipeline automáticamente.  Esto va a generar que evitemos el proceso manual que hicimos la clase pasada, cuando queríamos mostrar el cambio en nuestro servidor Apache.
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura26.PNG)
+> Pantalla de server apache
 
-Aclaración: Debemos desplegar nuestro Runner dentro del contenedor donde está alojado el Apache server,
-Comandos para instalar el runner:
-wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+Ya que tenemos ambos servidores correctamente conectados a la misma red docker. Procedemos a instalar nuestro runner quien va a ser el responsable de ejecutar nuestro pipeline automáticamente.  
 
-chmod 777 /usr/local/bin/gitlab-runner
+**Aclaración:** Debemos desplegar nuestro Runner dentro del contenedor donde está alojado el **Apache server**, Comandos para instalar el runner:
 
-gitlab-runner register (realizar pasos de registro para un runner de tipo shell)
+    wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 
-Luego de registrar el runner deberíamos llegar a tener nuestro runner en correcto funcionamiento. Si no está en verde ejecutar el comando: gitlab-runner run
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura27.PNG)
+> Pantalla de server apache
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura28.PNG)
+> Pantalla de server gitlab
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura29.PNG)
+> Pantalla de server gitlab
+
+    chmod 777 /usr/local/bin/gitlab-runner
+
+    gitlab-runner register (realizar pasos de registro para un runner de tipo shell)
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura30.PNG)
+> Pantalla de server apache
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura31.PNG)
+> Pantalla de server gitlab
+
+Luego de registrar el runner deberíamos llegar a tener nuestro runner en correcto funcionamiento. Si no está en verde ejecutar el comando: 
+
+    gitlab-runner run
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura32.PNG)
+> Pantalla de server apache
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura33.PNG)
+> Pantalla de server gitlab
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura34.PNG)
+> Pantalla de server gitlab
 
 Ejemplo de Pipeline:
 
-stages:
-  - init
-  - despliegue
+    stages:
+    - init
+    - despliegue
 
-hello:
-  stage: init
-  script:
-    - echo "Nuestro primer pipeline"
+    hello:
+    stage: init
+    script:
+        - echo "Nuestro primer pipeline"
 
-deploy:
-  stage: despliegue
-  script:
-    - cd /var/www/html
-    - git pull http://<username>:<password>@<url del repositorio>
+    deploy:
+    stage: despliegue
+    script:
+        - cd /var/www/html
+        - git pull http://<username>:<password>@<url del repositorio>
 
 
-Como conectar y crear una red en docker:
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura35.PNG)
+> Pantalla de server gitlab
 
-docker network create <nombre de nuestra red>
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura36.PNG)
+> Pantalla de server gitlab
 
-docker network connect <nombre de red que creamos> <container id>
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura37.PNG)
+> Pantalla de server gitlab
 
-docker inspect <container id>
-(Aca verificamos que nuestra red está attacheada en nuestro contenedor)
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura38.PNG)
+> Pantalla de PC huesped
 
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura39.PNG)
+> Pantalla de PC huesped
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura42.PNG)
+> Pantalla de server gitlab
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura40.PNG)
+> Pantalla de server gitlab
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-Server-CI-CD/Captura41.PNG)
+> Pantalla de server apache
 
 
 
