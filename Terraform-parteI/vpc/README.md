@@ -20,6 +20,7 @@ Tengamos en cuenta las siguientes consideraciones:
 
 
 Arquitectura a codear:
+
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Terraform-parteI/vpc/Ejemplo.PNG)
 > Pantalla de arquitectura a replicar
 
