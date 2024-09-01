@@ -139,10 +139,10 @@ y configurarlo.
         gitlab/gitlab-runner:latest
 
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-AWS-S3/Captura30.PNG)
-> > Pantalla de terminal huesped
+> Pantalla de terminal huesped
 
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-AWS-S3/Captura31.PNG)
-> > Pantalla de terminal huesped
+> Pantalla de terminal huesped
 
 ![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/GitLab-AWS-S3/Captura32.PNG)
 > Pantalla de terminal huesped
