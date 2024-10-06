@@ -307,6 +307,30 @@ Ahora deberíamos tener nuestra imagen en Docker Hub
 > Pantalla de docker hub -  perfil
 
 
+A continuación accederemos a esta imagen desde una máquina con Windows, para esto accedemos como un usuario público aqui: le damos click a Copy 
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura51.PNG)
+> Pantalla de repositorio de docker hub -  perfil publico
+
+Abrimos la terminal y pegamos el comando
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura52.PNG)
+> Pantalla de terminal en Windows
+
+Y el siguiente comando para poder ejecutar la imagen descargada en el puerto 8074
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura53.PNG)
+> Pantalla de terminal en Windows
+
+Si accedemos a Docker desktop podemos observar la imagen descargada:
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura54.PNG)
+> Pantalla de Docker desktop -  Images
+
+Ahora observamos el contenedor corriendo y l damos click al Port para que nos lleve al localhost
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura55.PNG)
+> Pantalla de Docker desktop -  Containers
+
+
+![](https://raw.githubusercontent.com/sgcm14/0523C02-infraestructura-II/main/Gitlab-Dockerhub/Captura56.PNG)
+> Pantalla navegador -  localhost de la imagen
+
 
 **Realizado por :** Sammy Gigi Cantoral Montejo (sgcm14)
 
